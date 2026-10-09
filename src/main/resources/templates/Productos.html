@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        table { border-collapse: collapse; width: 80%; }
+        th, td { border: 1px solid #999; padding: 8px 12px; text-align: left; }
+        th { background-color: #6b3e26; color: white; }
+        .alto { color: red; font-weight: bold; }
+        .accesible { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+<h1>Catálogo de Productos</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Precio (S/)</th>
+        <th>Estado</th>
+        <th>Acción</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p : ${productos}">
+        <td th:text="${p.id}">1</td>
+        <td th:text="${p.nombre}">Nombre</td>
+        <td th:text="${p.categoria}">Categoría</td>
+        <td th:text="${p.precio}">0.0</td>
+        <td>
+            <span th:if="${p.precio > 10}" class="alto">Precio alto</span>
+            <span th:unless="${p.precio > 10}" class="accesible">Precio accesible</span>
+        </td>
+        <td>
+            <a th:href="@{/productos/{id}(id=${p.id})}">Ver detalle</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a th:href="@{/inicio}">Volver al inicio</a>
+</body>
+</html>

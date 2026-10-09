@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #6b3e26; }
+    </style>
+</head>
+<body>
+<h1 th:text="${nombreNegocio}">Nombre del negocio</h1>
+<p th:text="${mensaje}">Mensaje de bienvenida</p>
+
+<hr>
+<a th:href="@{/inicio/vista}">Ver catálogo de productos</a>
+</body>
+</html>
